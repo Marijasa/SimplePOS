@@ -1,11 +1,46 @@
-<h2>Lista de Productos</h2>
-<ul>
-  <li *ngFor="let producto of productos">
-    <a [routerLink]="['/productos', producto.id]">{{
-      producto.nombre
-    }}</a>
-  </li>
-</ul>
-<button [routerLink]="['/productos/nuevo']">Agregar Nuevo Producto</button>
+<h2>Lista de productos</h2>
 
+<div class="mb-3">
+  <button class="btn btn-primary" [routerLink]="['/productos/nuevo']">
+    Nuevo Producto
+  </button>
+</div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí se repite para cada venta -->
+    <tr *ngFor="let producto of productos">
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>
+        <button
+          class="btn me-2 btn-primary"
+          [routerLink]="['/productos', producto.id]"
+        >
+          Detalles
+        </button>
+        <button
+          class="btn me-2 btn-warning"
+          [routerLink]="['/productos', producto.id, 'editar']"
+        >
+          Editar
+        </button>
+        <button
+          class="btn me-2 btn-danger"
+          (click)="eliminarProducto(producto.id)"
+        >
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,12 +1,40 @@
-<h2>{{ titulo }}</h2>
-<form (submit)="guardarProducto()">
-  <div>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" [(ngModel)]="producto.nombre" required>
-  </div>
-  <div>
-    <label for="precio">Precio:</label>
-    <input type="number" id="precio" name="precio" [(ngModel)]="producto.precio" required>
-  </div>
-  <button type="submit">{{ botonTexto }}</button>
-</form>
+<div class="col-6 offset-3">
+  <h2>{{ titulo }}</h2>
+  <form (submit)="guardarProducto()">
+    <div class="form-group">
+      <label for="nombre" class="form-label fs-5">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        class="form-control form-control-lg"
+        [(ngModel)]="producto.nombre"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="precio" class="form-label fs-5">Precio:</label>
+      <input
+        type="number"
+        id="precio"
+        name="precio"
+        class="form-control form-control-lg"
+        [(ngModel)]="producto.precio"
+        required
+      />
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <button type="submit" class="btn btn-primary me-3">
+        {{ botonTexto }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        [routerLink]="['/productos']"
+      >
+        Ver Lista
+      </button>
+    </div>
+  </form>
+</div>

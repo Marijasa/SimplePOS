@@ -16,8 +16,18 @@ export class ListaProductosComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    this.updateProducts();
+  }
+
+  updateProducts(): void {
     this.productService.getProductos().subscribe((data) => {
       this.productos = data;
+    });
+  }
+
+  eliminarProducto(id: string) {
+    this.productService.eliminarProducto(id).subscribe(() => {
+      this.updateProducts();
     });
   }
 }
