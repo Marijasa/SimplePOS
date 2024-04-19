@@ -1,0 +1,7 @@
+<h2>Detalles del Producto</h2>
+<div *ngIf="producto">
+  <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
+  <p><strong>Precio:</strong> {{ producto.precio }}</p>
+  <button (click)="editarProducto()">Editar</button>
+  <button (click)="eliminarProducto()">Eliminar</button>
+</div>
