@@ -1,0 +1,27 @@
+<!-- detalle-venta.component.html -->
+<h2>Detalles de Venta</h2>
+
+<div>
+  <p>Total: {{ venta.total }}</p>
+  <p>Cliente: {{ venta.nombreCliente }}</p>
+  <p>Fecha: {{ venta.fechaVenta }}</p>
+</div>
+
+<h3>Productos Vendidos</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Aquí se repite para cada producto vendido -->
+    <tr *ngFor="let producto of productosVendidos">
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.cantidad }}</td>
+      <td>{{ producto.precioUnitario }}</td>
+    </tr>
+  </tbody>
+</table>

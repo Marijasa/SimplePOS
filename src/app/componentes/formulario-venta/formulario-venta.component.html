@@ -1,0 +1,128 @@
+<!-- formulario-venta.component.html y editar-venta.component.html son iguales -->
+<h2>{{ titulo }}</h2>
+
+<form (ngSubmit)="guardarVenta()">
+  <div class="row row-header">
+    <div class="form-group col">
+      <label>Cliente:</label>
+      <input
+        type="text"
+        class="form-control form-select-lg"
+        [(ngModel)]="venta.cliente"
+        name="cliente"
+      />
+    </div>
+    <div class="form-group col">
+      <label>Forma de pago:</label>
+      <select
+        name="id_tipo_pago"
+        id="id_tipo_pago"
+        [(ngModel)]="venta.id_tipo_pago"
+        class="form-select form-select-lg"
+      >
+        <option value="1">Efectivo</option>
+        <option value="2">Sinpe</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex flex-wrap mt-5 col-8">
+      <div
+        class="col-xl-4 col-lg-3"
+        *ngFor="let producto of productos; let i = index"
+      >
+        <div class="border border-4 bg-light m-2 p-4">
+          <label class="fs-3">{{ producto.nombre }}</label>
+          <br />
+          <label class="fs-3"> ₡ {{ producto.precio }}</label>
+
+          <div class="row">
+            <button
+              type="button"
+              class="btn btn-md btn-primary col p-0 pt-2 pb-2"
+              style="font-size: 1.25rem"
+              (click)="agregarProducto(i)"
+            >
+              Agregar
+            </button>
+            <button
+              type="button"
+              class="btn btn-md btn-danger col p-0"
+              style="font-size: 1.25rem"
+              (click)="quitarProducto(i)"
+            >
+              Quitar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap mt-5 col-4">
+      <div>
+        <h3>Productos Seleccionados</h3>
+        <table class="table table-bordered border" style="font-size: 1.25rem">
+          <tr>
+            <th>Cantidad</th>
+            <th>Producto</th>
+            <th>Precio</th>
+          </tr>
+          <tr *ngFor="let producto of venta.productos; let i = index">
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>₡ {{ producto.precio * producto.cantidad }}</td>
+          </tr>
+        </table>
+
+        <div class="form-group">
+          <label>Total:</label>
+          <input
+            type="number"
+            class="form-control form-select-lg"
+            [(ngModel)]="venta.total"
+            name="total"
+            readonly
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label>Paga con:</label>
+          <input
+            type="number"
+            class="form-control form-select-lg"
+            [(ngModel)]="venta.pagaCon"
+            name="pagaCon"
+            (ngModelChange)="calcularVuelto()"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label>Vuelto:</label>
+          <input
+            type="number"
+            class="form-control form-select-lg"
+            [(ngModel)]="venta.vuelto"
+            name="vuelto"
+            readonly
+          />
+        </div>
+
+        <div class="mt-2 d-flex justify-content-evenly">
+          <!-- Aquí puedes agregar campos adicionales como tipo de pago, lista de productos, etc. -->
+          <button type="submit" class="btn btn-primary">
+            {{ botonTexto }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="cancelar()">
+            Ver Lista
+          </button>
+          <button type="button" class="btn btn-warning" (click)="cancelar()">
+            Limpiar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div #ticket class="d-none">
+  <app-ticket [venta]="ventaPrint"></app-ticket>
+</div>
