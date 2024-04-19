@@ -5,6 +5,7 @@ import { DetalleProductoComponent } from './componentes/detalle-producto/detalle
 import { ListaVentasComponent } from './componentes/lista-ventas/lista-ventas.component';
 import { DetalleVentaComponent } from './componentes/detalle-venta/detalle-venta.component';
 import { FormularioVentaComponent } from './componentes/formulario-venta/formulario-venta.component';
+import { ReporteTotalComponent } from './componentes/reporte-total/reporte-total.component';
 
 
 export const routes: Routes = [
@@ -15,6 +16,7 @@ export const routes: Routes = [
   { path: 'ventas', component: ListaVentasComponent },
   { path: 'ventas/nuevo', component: FormularioVentaComponent },
   { path: 'ventas/:id', component: DetalleVentaComponent },
+  { path: 'totales', component: ReporteTotalComponent },
   { path: '', redirectTo: '/productos', pathMatch: 'full' },
   // Agrega aquí otras rutas si es necesario
 ];

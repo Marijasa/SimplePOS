@@ -45,6 +45,20 @@
         >
           Eliminar
         </button>
+        <button
+          *ngIf="producto.activo == 1"
+          class="btn me-2 btn-secondary"
+          (click)="cambiarProducto(producto)"
+        >
+          Desactivar
+        </button>
+        <button
+          *ngIf="producto.activo == 0"
+          class="btn me-2 btn-info"
+          (click)="cambiarProducto(producto)"
+        >
+          Activar
+        </button>
       </td>
     </tr>
   </tbody>

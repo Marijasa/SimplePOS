@@ -30,4 +30,12 @@ export class ListaProductosComponent implements OnInit {
       this.updateProducts();
     });
   }
+
+  cambiarProducto(producto: any) {
+    producto.activo = (producto.activo == 1) ? 0 : 1;
+    this.productService.actualizarProducto(producto).subscribe(() => {
+      this.updateProducts();
+    });
+  }
+
 }

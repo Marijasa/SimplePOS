@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         "total" => $row['total'],
                         "cliente" => $row['nombre_cliente'],
                         "tipo_pago" => $row['tipo_pago_nombre'],
+                        "id_tipo_pago" => $row['id_tipo_pago'],
                         "fecha_venta" => $row['fecha_venta'],
                         "productos" => []
                     ];
@@ -51,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         "total" => $row['total'],
                         "cliente" => $row['nombre_cliente'],
                         "tipo_pago" => $row['tipo_pago_nombre'],
+                        "id_tipo_pago" => $row['id_tipo_pago'],
                         "fecha_venta" => $row['fecha_venta'],
                         "productos" => []
                     ];
