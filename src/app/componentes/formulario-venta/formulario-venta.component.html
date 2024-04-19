@@ -2,7 +2,7 @@
 <h2>{{ titulo }}</h2>
 
 <form (ngSubmit)="guardarVenta()">
-  <div class="row row-header">
+  <div class="row row-header p-2">
     <div class="form-group col">
       <label>Cliente:</label>
       <input
@@ -27,12 +27,16 @@
   </div>
 
   <div class="row">
-    <div class="d-flex flex-wrap mt-5 col-8">
+    <div
+      class="d-flex flex-wrap mt-3 col-8"
+      style="overflow: scroll; max-height: 500px"
+    >
       <div
-        class="col-xl-4 col-lg-3"
+        class="col mb-2"
+        style="min-width: 200px"
         *ngFor="let producto of productos; let i = index"
       >
-        <div class="border border-4 bg-light m-2 p-4">
+        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
           <label class="fs-3">{{ producto.nombre }}</label>
           <br />
           <label class="fs-3"> ₡ {{ producto.precio }}</label>
@@ -59,7 +63,7 @@
       </div>
     </div>
 
-    <div class="d-flex flex-wrap mt-5 col-4">
+    <div class="d-flex flex-wrap mt-3 col-4">
       <div>
         <h3>Productos Seleccionados</h3>
         <table class="table table-bordered border" style="font-size: 1.25rem">

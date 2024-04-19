@@ -36,7 +36,7 @@ export class ListaVentasComponent implements OnInit {
   eliminarVenta(id: string): void {
     this.ventaService.eliminarVenta(id).subscribe(() => {
       // Eliminar la venta de la lista después de la confirmación del servidor
-      this.ventas = this.ventas.filter((venta) => venta.id !== id);
+      this.obtenerVentas();
     });
   }
 }

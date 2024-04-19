@@ -70,11 +70,8 @@ export class FormularioVentaComponent implements OnInit {
       this.venta.id = data.id;
       // this.ventaPrint = JSON.parse(JSON.stringify(this.venta));
       this.ventaPrint = { ...this.venta };
-
-      // wait 1 segundo
       setTimeout(() => {
         this.imprimirTicket();
-        this.limpiarVenta();
       }, 1000);
     });
   }
@@ -85,7 +82,10 @@ export class FormularioVentaComponent implements OnInit {
     // const ventanaImpresion = window.open('', '_blank');
     ventanaImpresion?.document.write(contenidoTicket);
     ventanaImpresion?.document.close();
-    ventanaImpresion?.print();
+    setTimeout(() => {
+      ventanaImpresion?.print();
+      this.limpiarVenta();
+    }, 300);
   }
 
   agregarProducto(id: number): void {

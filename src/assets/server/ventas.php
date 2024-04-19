@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 
-
 // Endpoint para crear una nueva venta con los productos relacionados
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -122,6 +121,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // }
   
   // echo json_encode(['mensaje' => 'Venta creada correctamente']);
+}
+
+
+
+// Endpoint para eliminar un producto
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+  // echo '<pre>';
+  // var_dump($_SERVER);
+  // echo '</pre>';
+    $id = $_GET['id'];
+    $sql = "DELETE FROM venta_producto WHERE id_venta=$id";
+    if ($conn->query($sql) === TRUE) {
+      $sql = "DELETE FROM ventas WHERE id=$id";
+      if ($conn->query($sql) === TRUE) {
+          echo json_encode(["message" => "Venta eliminado exitosamente"]);
+      } else {
+          echo json_encode(["message" => "Error al eliminar la venta: " . $conn->error]);
+      }
+      
+    } else {
+        echo json_encode(["message" => "Error al eliminar los productos de la venta: " . $conn->error]);
+    }
+    
 }
 
 // Cerrar la conexión a la base de datos
