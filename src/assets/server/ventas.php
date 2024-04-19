@@ -139,7 +139,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
       } else {
           echo json_encode(["message" => "Error al eliminar la venta: " . $conn->error]);
       }
-      
     } else {
         echo json_encode(["message" => "Error al eliminar los productos de la venta: " . $conn->error]);
     }

@@ -41,3 +41,6 @@ CREATE TABLE venta_producto (
     FOREIGN KEY (id_venta) REFERENCES ventas(id),
     FOREIGN KEY (id_producto) REFERENCES productos(id)
 );
+
+
+ALTER TABLE productos ADD COLUMN activo TINYINT NOT NULL DEFAULT(1);

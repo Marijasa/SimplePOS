@@ -12,6 +12,7 @@
       <th>ID</th>
       <th>Nombre</th>
       <th>Precio</th>
+      <th>Activo</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -21,6 +22,10 @@
       <td>{{ producto.id }}</td>
       <td>{{ producto.nombre }}</td>
       <td>{{ producto.precio }}</td>
+      <td>
+        <span *ngIf="producto.activo == 1" class="badge bg-success">Sí</span>
+        <span *ngIf="producto.activo == 0" class="badge bg-danger">No</span>
+      </td>
       <td>
         <button
           class="btn me-2 btn-primary"

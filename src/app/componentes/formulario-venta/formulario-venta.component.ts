@@ -40,6 +40,12 @@ export class FormularioVentaComponent implements OnInit {
   ) {
     productService.getProductos().subscribe((productos) => {
       this.productos = productos;
+
+      //   filter productos and return only products with activo = 1
+      this.productos = this.productos.filter(
+        (producto) => producto.activo == 1
+      );
+      console.log('Productos:', this.productos);
     });
   }
 

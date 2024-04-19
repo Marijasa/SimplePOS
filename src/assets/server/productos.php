@@ -49,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $id = $data['id'];
   $nombre = $data['nombre'];
   $precio = $data['precio'];
-  $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE id=$id";
+  $activo = $data['activo'];
+  $sql = "UPDATE productos SET nombre='$nombre', precio=$precio, activo=$activo WHERE id=$id";
   if ($conn->query($sql) === TRUE) {
       echo json_encode(["message" => "Producto actualizado exitosamente"]);
   } else {
