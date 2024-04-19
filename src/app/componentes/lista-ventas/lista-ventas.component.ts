@@ -2,12 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 import { VentaService } from '../../servicios/venta.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-lista-ventas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './lista-ventas.component.html',
   styleUrls: ['./lista-ventas.component.scss'],
 })

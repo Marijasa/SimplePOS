@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { VentaService } from '../../servicios/venta.service';
 import { ProductService } from '../../servicios/product.service';
 import { TicketComponent } from '../ticket/ticket.component';
@@ -10,7 +10,7 @@ import { TicketComponent } from '../ticket/ticket.component';
 @Component({
   selector: 'app-formulario-venta',
   standalone: true,
-  imports: [FormsModule, CommonModule, TicketComponent],
+  imports: [FormsModule, CommonModule, TicketComponent, RouterLink],
   templateUrl: './formulario-venta.component.html',
   styleUrls: ['./formulario-venta.component.scss'],
 })
@@ -86,11 +86,6 @@ export class FormularioVentaComponent implements OnInit {
     ventanaImpresion?.document.write(contenidoTicket);
     ventanaImpresion?.document.close();
     ventanaImpresion?.print();
-  }
-
-  cancelar(): void {
-    // Navegar a la lista de ventas sin guardar cambios
-    this.router.navigate(['/ventas']);
   }
 
   agregarProducto(id: number): void {

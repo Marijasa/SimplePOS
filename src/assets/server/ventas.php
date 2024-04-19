@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['id'])) {
         // Obtener una venta por su ID
         $id = $_GET['id'];
-        $sql = "SELECT v.*, vp.id_producto, vp.cantidad, tp.nombre AS tipo_pago_nombre FROM ventas v LEFT JOIN venta_producto vp ON v.id = vp.id_venta LEFT JOIN tipos_pago tp ON v.id_tipo_pago = tp.id WHERE v.id = $id";
+        $sql = "SELECT v.*, vp.id_producto, vp.cantidad, vp.precio, p.nombre as nombre_prod, tp.nombre AS tipo_pago_nombre FROM ventas v LEFT JOIN venta_producto vp ON v.id = vp.id_venta LEFT JOIN productos p ON vp.id_producto = p.id LEFT JOIN tipos_pago tp ON v.id_tipo_pago = tp.id WHERE v.id = $id";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $ventas = [];
@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $ventas[$venta_id] = [
                         "id" => $row['id'],
                         "total" => $row['total'],
+                        "cliente" => $row['nombre_cliente'],
                         "tipo_pago" => $row['tipo_pago_nombre'],
                         "fecha_venta" => $row['fecha_venta'],
                         "productos" => []
@@ -24,12 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 }
                 if ($row['id_producto'] !== null) {
                     $ventas[$venta_id]['productos'][] = [
-                        "id_producto" => $row['id_producto'],
+                      "id_producto" => $row['id_producto'],
+                      "nombre" => $row['nombre_prod'],
+                      "precio" => $row['precio'],
                         "cantidad" => $row['cantidad']
                     ];
                 }
             }
-            echo json_encode(array_values($ventas));
+            $ventas = array_values($ventas)[0];
+            echo json_encode($ventas);
         } else {
             echo json_encode(["message" => "Venta no encontrada"]);
         }
@@ -45,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $ventas[$venta_id] = [
                         "id" => $row['id'],
                         "total" => $row['total'],
+                        "cliente" => $row['nombre_cliente'],
                         "tipo_pago" => $row['tipo_pago_nombre'],
                         "fecha_venta" => $row['fecha_venta'],
                         "productos" => []

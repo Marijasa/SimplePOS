@@ -1,27 +1,35 @@
 <!-- detalle-venta.component.html -->
 <h2>Detalles de Venta</h2>
 
-<div>
-  <p>Total: {{ venta.total }}</p>
-  <p>Cliente: {{ venta.nombreCliente }}</p>
-  <p>Fecha: {{ venta.fechaVenta }}</p>
+<div class="row">
+  <p class="col"><label class="fw-bold">Cliente:</label> {{ venta.cliente }}</p>
+  <p class="col">
+    <label class="fw-bold">Tipo pago:</label> {{ venta.tipo_pago }}
+  </p>
+  <p class="col">
+    <label class="fw-bold">Fecha:</label> {{ venta.fecha_venta }}
+  </p>
 </div>
 
 <h3>Productos Vendidos</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Producto</th>
-      <th>Cantidad</th>
-      <th>Precio Unitario</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Aquí se repite para cada producto vendido -->
-    <tr *ngFor="let producto of productosVendidos">
-      <td>{{ producto.nombre }}</td>
-      <td>{{ producto.cantidad }}</td>
-      <td>{{ producto.precioUnitario }}</td>
-    </tr>
-  </tbody>
+<table class="table table-bordered border" style="font-size: 1.25rem">
+  <tr>
+    <th>Cantidad</th>
+    <th>Producto</th>
+    <th>Precio</th>
+  </tr>
+  <tr *ngFor="let producto of venta.productos; let i = index">
+    <td>{{ producto.cantidad }}</td>
+    <td>{{ producto.nombre }}</td>
+    <td>₡ {{ producto.precio * producto.cantidad }}</td>
+  </tr>
+  <tr class="bg-light">
+    <td colspan="2" align="right" class="pe-2">Total:</td>
+    <td>₡ {{ venta.total }}</td>
+  </tr>
 </table>
+<div class="d-flex justify-content-center">
+  <button type="button" class="btn btn-secondary" [routerLink]="['/ventas']">
+    Ver Lista
+  </button>
+</div>

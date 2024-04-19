@@ -9,9 +9,9 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Total</th>
       <th>Cliente</th>
       <th>Fecha</th>
+      <th>Total</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -19,13 +19,18 @@
     <!-- Aquí se repite para cada venta -->
     <tr *ngFor="let venta of ventas">
       <td>{{ venta.id }}</td>
-      <td>{{ venta.total }}</td>
-      <td>{{ venta.nombreCliente }}</td>
-      <td>{{ venta.fechaVenta }}</td>
+      <td>{{ venta.cliente }}</td>
+      <td>{{ venta.fecha_venta }}</td>
+      <td>₡ {{ venta.total }}</td>
       <td>
-        <button class="btn btn-primary">Detalles</button>
-        <button class="btn btn-warning">Editar</button>
-        <button class="btn btn-danger">Eliminar</button>
+        <button
+          class="btn me-2 btn-primary"
+          [routerLink]="['/ventas', venta.id]"
+        >
+          Detalles
+        </button>
+        <!-- <button class="btn me-2 btn-warning">Editar</button> -->
+        <button class="btn me-2 btn-danger">Eliminar</button>
       </td>
     </tr>
   </tbody>

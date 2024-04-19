@@ -111,10 +111,10 @@
           <button type="submit" class="btn btn-primary">
             {{ botonTexto }}
           </button>
-          <button type="button" class="btn btn-secondary" (click)="cancelar()">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/ventas']">
             Ver Lista
           </button>
-          <button type="button" class="btn btn-warning" (click)="cancelar()">
+          <button type="button" class="btn btn-warning" [routerLink]="['/ventas']">
             Limpiar
           </button>
         </div>

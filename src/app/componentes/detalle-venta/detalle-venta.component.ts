@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { VentaService } from '../../servicios/venta.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalle-venta',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './detalle-venta.component.html',
   styleUrls: ['./detalle-venta.component.scss'],
 })
@@ -27,6 +27,7 @@ export class DetalleVentaComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.ventaService.getVentaById(id).subscribe((venta) => {
       this.venta = venta;
+      console.log(this.venta);
       // Si necesitas cargar los productos vendidos
       // this.obtenerProductosVendidos(id);
     });
