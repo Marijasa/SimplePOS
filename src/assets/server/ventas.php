@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
     } else {
         // Obtener todas las ventas
-        $sql = "SELECT v.*, vp.id_producto, vp.cantidad, tp.nombre AS tipo_pago_nombre FROM ventas v LEFT JOIN venta_producto vp ON v.id = vp.id_venta LEFT JOIN tipos_pago tp ON v.id_tipo_pago = tp.id";
+        $sql = "SELECT v.*, vp.id_producto, vp.cantidad, tp.nombre AS tipo_pago_nombre, p.nombre AS prod_nombre, vp.precio AS prod_precio FROM ventas v LEFT JOIN venta_producto vp ON v.id = vp.id_venta LEFT JOIN productos p ON p.id = vp.id_producto LEFT JOIN tipos_pago tp ON v.id_tipo_pago = tp.id";
         $result = $conn->query($sql);
         $ventas = [];
         if ($result->num_rows > 0) {
@@ -59,7 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 }
                 if ($row['id_producto'] !== null) {
                     $ventas[$venta_id]['productos'][] = [
-                        "id_producto" => $row['id_producto'],
+                      "id_producto" => $row['id_producto'],
+                      "nombre" => $row['prod_nombre'],
+                      "precio" => $row['prod_precio'],
                         "cantidad" => $row['cantidad']
                     ];
                 }
