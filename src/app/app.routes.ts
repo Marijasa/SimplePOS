@@ -9,6 +9,5 @@ export const routes: Routes = [
   { path: 'productos/:id', component: DetalleProductoComponent },
   { path: 'productos/:id/editar', component: FormularioProductoComponent },
   { path: '', redirectTo: '/productos', pathMatch: 'full' },
-  { path: '**', redirectTo: '/productos' } // Manejo de rutas no encontradas
   // Agrega aquí otras rutas si es necesario
 ];

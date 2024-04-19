@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ListaProductosComponent } from './componentes/lista-productos/lista-productos.component';
+import { MainComponent } from './componentes/main/main.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ListaProductosComponent],
+  imports: [RouterOutlet, MainComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'SimplePOS';

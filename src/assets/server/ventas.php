@@ -1,17 +1,6 @@
 <?php
 
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "tu_usuario";
-$password = "tu_contraseña";
-$database = "pos_database";
-
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+require_once('./config.php');
 
 // Endpoint para obtener todas las ventas
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {

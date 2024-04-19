@@ -1,31 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../servicios/product.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalle-producto',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './detalle-producto.component.html',
-  styleUrls: ['./detalle-producto.component.scss']
+  styleUrls: ['./detalle-producto.component.scss'],
 })
 export class DetalleProductoComponent implements OnInit {
   producto: any;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
-    this.productService.getProducto(id).subscribe(data => {
+    this.productService.getProducto(id).subscribe((data) => {
       this.producto = data;
+      console.log('Producto:', this.producto);
     });
   }
 
   editarProducto() {
-    // Implementa la lógica para editar el producto
+    this.router.navigate(['/productos', this.producto.id, 'editar']);
   }
 
   eliminarProducto() {
-    // Implementa la lógica para eliminar el producto
+    this.productService.eliminarProducto(this.producto.id).subscribe(() => {
+      this.router.navigate(['/productos']);
+    });
   }
 }

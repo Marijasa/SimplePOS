@@ -45,22 +45,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Endpoint para actualizar un producto
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-    parse_str(file_get_contents("php://input"), $data);
-    $id = $data['id'];
-    $nombre = $data['nombre'];
-    $precio = $data['precio'];
-    $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE id=$id";
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["message" => "Producto actualizado exitosamente"]);
-    } else {
-        echo json_encode(["message" => "Error al actualizar el producto: " . $conn->error]);
-    }
+  $data = json_decode(file_get_contents("php://input"), true);
+  $id = $data['id'];
+  $nombre = $data['nombre'];
+  $precio = $data['precio'];
+  $sql = "UPDATE productos SET nombre='$nombre', precio=$precio WHERE id=$id";
+  if ($conn->query($sql) === TRUE) {
+      echo json_encode(["message" => "Producto actualizado exitosamente"]);
+  } else {
+      echo json_encode(["message" => "Error al actualizar el producto: " . $conn->error]);
+  }
 }
 
 // Endpoint para eliminar un producto
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    parse_str(file_get_contents("php://input"), $data);
-    $id = $data['id'];
+  // echo '<pre>';
+  // var_dump($_SERVER);
+  // echo '</pre>';
+    $id = $_GET['id'];
     $sql = "DELETE FROM productos WHERE id=$id";
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["message" => "Producto eliminado exitosamente"]);
@@ -73,3 +75,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 $conn->close();
 
 ?>
+

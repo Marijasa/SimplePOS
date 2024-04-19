@@ -16,21 +16,24 @@ export class ProductService {
   }
 
   getProducto(id: string): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}?id=${id}`;
     return this.http.get<any>(url);
   }
 
   agregarProducto(producto: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, producto);
+    const headers = {
+      headers: { 'Content-Type': 'application/json' },
+    };
+    return this.http.post(this.apiUrl, producto, headers);
   }
 
   actualizarProducto(producto: any): Observable<any> {
-    const url = `${this.apiUrl}/${producto.id}`;
+    const url = `${this.apiUrl}`;
     return this.http.put<any>(url, producto);
   }
 
   eliminarProducto(id: string): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}?id=${id}`;
     return this.http.delete<any>(url);
   }
 }
