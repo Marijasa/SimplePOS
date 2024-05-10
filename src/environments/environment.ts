@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  server_url: 'http://simplepos.test:98/src/assets/server/',
+  server_url: 'http://localhost/simplepos/src/assets/server/',
 };
