@@ -1,9 +1,56 @@
-.row-header {
-  .form-group label {
-    font-size: 2rem;
+
+.form-group {
+  margin-bottom: 10px;
+  label {
+    font-size: 1.25rem;
+    font-weight: bold;
   }
 }
 
-.form-group label {
-  font-size: 1.25rem;
+.totalInput {
+  font-size: 2.5rem;
+}
+
+#totalTitle {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.table-bordered {
+  border: 3px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 2rem;
+}
+
+table tr th,
+table tr td {
+  border-radius: 2rem;
+}
+
+.table td, .table th {
+  padding: .75rem;
+  vertical-align: top;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: rgba(240, 172, 201, 0.73);
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: rgba(158, 214, 240, 0.83);
+}
+
+
+.btn-symbol {
+  font-size: 2.5rem !important;
+  font-weight: bolder;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.my-border {
+  border-color: rgba(0, 0, 0, 0.37) !important;
+  border-radius: 2rem;
 }

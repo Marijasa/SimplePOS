@@ -1,93 +1,99 @@
 <!-- formulario-venta.component.html y editar-venta.component.html son iguales -->
 <h2>{{ titulo }}</h2>
 
-<form (ngSubmit)="guardarVenta()">
-  <div class="row row-header p-2">
-    <div class="form-group col">
-      <label>Cliente:</label>
-      <input
-        type="text"
-        class="form-control form-select-lg"
-        [(ngModel)]="venta.cliente"
-        name="cliente"
-      />
-    </div>
-    <div class="form-group col">
-      <label>Forma de pago:</label>
-      <select
-        name="id_tipo_pago"
-        id="id_tipo_pago"
-        [(ngModel)]="venta.id_tipo_pago"
-        class="form-select form-select-lg"
-      >
-        <option value="1">Efectivo</option>
-        <option value="2">Sinpe</option>
-      </select>
-    </div>
-  </div>
-
+<form (ngSubmit)="guardarVenta()" ngNativeValidate>
   <div class="row">
     <div
       class="d-flex flex-wrap mt-3 col-8"
-      style="overflow: scroll; max-height: 500px"
+      style="overflow: scroll; max-height: 550px"
     >
       <div
         class="col mb-2"
         style="min-width: 200px"
         *ngFor="let producto of productos; let i = index"
       >
-        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
-          <label class="fs-3">{{ producto.nombre }}</label>
-          <br />
-          <label class="fs-3"> ₡ {{ producto.precio }}</label>
+        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+         <div>
+           <label class="fs-3">{{ producto.nombre }}</label>
+         </div>
 
-          <div class="row">
-            <button
-              type="button"
-              class="btn btn-md btn-primary col p-0 pt-2 pb-2"
-              style="font-size: 1.25rem"
-              (click)="agregarProducto(i)"
-            >
-              Agregar
-            </button>
-            <button
-              type="button"
-              class="btn btn-md btn-danger col p-0"
-              style="font-size: 1.25rem"
-              (click)="quitarProducto(i)"
-            >
-              Quitar
-            </button>
+
+          <div class="mt-auto">
+            <label class="fs-3"> <b> ₡ {{ producto.precio }} </b></label>
+
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-md btn-primary col me-1 btn-symbol"
+                style="font-size: 1.25rem"
+                (click)="agregarProducto(i)"
+              >
+                +
+              </button>
+              <button
+                type="button"
+                class="btn btn-md btn-danger col ms-1 btn-symbol"
+                style="font-size: 1.25rem"
+                (click)="quitarProducto(i)"
+              >
+                -
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="d-flex flex-wrap mt-3 col-4">
-      <div>
-        <h3>Productos Seleccionados</h3>
-        <table class="table table-bordered border" style="font-size: 1.25rem">
-          <tr>
-            <th>Cantidad</th>
-            <th>Producto</th>
-            <th>Precio</th>
-          </tr>
+    <div class="mt-3 col-4 p-3">
+      <div class="form-group col mb-3">
+        <label>Cliente:</label>
+        <input
+          type="text"
+          class="form-control form-select-lg"
+          [(ngModel)]="venta.cliente"
+          name="cliente"
+        />
+      </div>
+      <div class="form-group">
+        <table class="table table-bordered" style="font-size: 1.25rem">
+          <thead>
+            <tr>
+              <th align="center">Cant</th>
+              <th>Producto</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
           <tr *ngFor="let producto of venta.productos; let i = index">
-            <td>{{ producto.cantidad }}</td>
+            <td align="center">{{ producto.cantidad }}</td>
             <td>{{ producto.nombre }}</td>
-            <td>₡ {{ producto.precio * producto.cantidad }}</td>
+            <td align="right">₡ {{ producto.precio * producto.cantidad }}</td>
           </tr>
+          </tbody>
         </table>
 
         <div class="form-group">
-          <label>Total:</label>
+          <label id="totalTitle">Total:</label>
           <input
             type="number"
-            class="form-control form-select-lg"
+            class="form-control form-select-lg totalInput"
             [(ngModel)]="venta.total"
             name="total"
             readonly
           />
+        </div>
+        <div class="form-group col mb-3">
+          <label>Forma de pago:</label>
+          <select  required
+                   name="id_tipo_pago"
+                   id="id_tipo_pago"
+                   [(ngModel)]="venta.id_tipo_pago"
+                   class="form-select form-select-lg"
+          >
+            <option value="">Seleccione</option>
+            <option value="1">Efectivo</option>
+            <option value="2">Sinpe</option>
+          </select>
         </div>
         <div class="form-group mt-2">
           <label>Paga con:</label>
@@ -117,15 +123,8 @@
           </button>
           <button
             type="button"
-            class="btn btn-secondary"
-            [routerLink]="['/ventas']"
-          >
-            Ver Lista
-          </button>
-          <button
-            type="button"
             class="btn btn-warning"
-            [routerLink]="['/ventas']"
+            (click)="limpiarVenta()"
           >
             Limpiar
           </button>
