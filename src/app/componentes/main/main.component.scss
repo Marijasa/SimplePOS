@@ -1,4 +1,14 @@
 .nav-item {
   padding-left: 10px;
   padding-right: 10px;
+  margin-right: .25rem !important;
+}
+
+.active,
+.nav-item:hover {
+  border-radius: 1rem;
+  background-color: rgb(116, 112, 112);
+  .nav-link {
+    color: white !important;
+  }
 }
