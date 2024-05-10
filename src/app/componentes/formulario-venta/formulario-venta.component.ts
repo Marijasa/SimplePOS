@@ -19,7 +19,7 @@ export class FormularioVentaComponent implements OnInit {
     id: 0,
     fecha: new Date(),
     cliente: '',
-    id_tipo_pago: 1,
+    id_tipo_pago: '',
     productos: [],
     total: 0,
     pagaCon: 0,
@@ -145,12 +145,17 @@ export class FormularioVentaComponent implements OnInit {
       id: 0,
       fecha: new Date(),
       cliente: '',
-      id_tipo_pago: 1,
+      id_tipo_pago: '',
       productos: [],
       total: 0,
       pagaCon: 0,
       vuelto: 0,
     };
     this.ventaPrint = {};
+
+    this.productos.forEach((producto) => {
+      producto.cantidad = 0;
+    });
+
   }
 }
