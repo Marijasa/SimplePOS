@@ -11,6 +11,21 @@ CREATE TABLE IF NOT EXISTS productos (
     precio DECIMAL(10, 2) NOT NULL
 );
 
+-- Volcando datos para la tabla pos_database.productos: ~11 rows (aproximadamente)
+INSERT INTO `productos` (`id`, `nombre`, `precio`, `activo`) VALUES
+                                                               (2, 'CHIFRIJO', 2000.00, 1),
+                                                               (3, 'EMPANADA POLLO', 500.00, 0),
+                                                               (4, 'EMPANADA QUESO', 500.00, 1),
+                                                               (5, 'EMPANADA FRIJOL', 500.00, 1),
+                                                               (6, 'EMPANADA CHIVERRE', 250.00, 1),
+                                                               (7, 'CHALUPA', 1500.00, 0),
+                                                               (8, 'NACHO POLLO', 2000.00, 0),
+                                                               (9, 'AGUADULCE', 500.00, 1),
+                                                               (10, 'CAFE', 500.00, 1),
+                                                               (11, 'GASEOSA', 500.00, 1),
+                                                               (12, 'PINCHO', 1000.00, 1),
+                                                               (13, 'SOBRANTE DE QUESO', 1000.00, 0);
+
 -- Creamos la tabla para los tipos de pago
 CREATE TABLE IF NOT EXISTS tipos_pago (
     id INT AUTO_INCREMENT PRIMARY KEY,
