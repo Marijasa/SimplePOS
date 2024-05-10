@@ -14,7 +14,7 @@ export class ReporteTotalComponent {
   ventasTotales = 0;
   ventasEfectivo = 0;
   ventasSinpe = 0;
-  ventasProducto: any[] = []; 
+  ventasProducto: any[] = [];
 
   constructor(private ventaService: VentaService) {
     console.log('ReporteTotalComponent');
@@ -43,14 +43,15 @@ export class ReporteTotalComponent {
 
         // guardar total de ventas por producto
         venta.productos.forEach((producto: any) => {
+          const totalProd = producto.precio * producto.cantidad;
 
           if(this.ventasProducto[producto.id_producto] !== undefined) {
-            this.ventasProducto[producto.id_producto].total += total;
+            this.ventasProducto[producto.id_producto].total += totalProd;
 
           } else {
             this.ventasProducto[producto.id_producto] = {
               nombre: producto.nombre,
-              total: producto.precio * producto.cantidad,
+              total: totalProd,
             };
           }
         });
@@ -58,6 +59,8 @@ export class ReporteTotalComponent {
 
       // eliminar campos vacíos en ventasProducto
       this.ventasProducto = this.ventasProducto.filter((producto) => producto !== undefined);
+      // ordenar verntasProducto por total
+      this.ventasProducto.sort((a, b) => b.total - a.total);
       console.log('ventasProducto', this.ventasProducto);
     });
   }
