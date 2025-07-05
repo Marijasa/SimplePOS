@@ -1,5 +1,5 @@
 -- Volcando estructura de base de datos para pos_database
-CREATE DATABASE `pos_database`;
+CREATE DATABASE IF NOT EXISTS pos_database;
 USE `pos_database`;
 
 -- Volcando estructura para tabla pos_database.productos
