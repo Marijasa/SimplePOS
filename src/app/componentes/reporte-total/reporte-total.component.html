@@ -1,34 +1,43 @@
 <h2>Total de ventas</h2>
 
 <div class="row ps-3 pe-3 mt-3">
-  <div class="border border-primary p-3 col-4 me-2">
+  <div class="border border-primary border-4 p-3 my-rounded col-4 me-2">
     <h3 class="text-primary">Totales vendido</h3>
     <div class="d-flex flex-wrap mt-3">
       <div class="col mb-2" style="min-width: 200px">
-        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
-          <label class="fs-3">Ventas totales</label>
-          <br />
-          <label class="fs-3"> ₡ {{ ventasTotales }}</label>
+        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+          <div>
+            <label class="fs-3">Ventas totales</label>
+          </div>
+          <div class="mt-auto">
+            <label class="fs-3"> <b>₡ {{ ventasTotales | number:'.0-0' }}</b> </label>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="border border-info p-3 ms-2 col">
+  <div class="border border-info border-4 p-3 my-rounded ms-2 col">
     <h3 class="text-info">Totales por tipo pago</h3>
     <div class="d-flex flex-wrap mt-3">
-      <div class="col mb-2" style="min-width: 200px">
-        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
-          <label class="fs-3">Ventas totales efectivo</label>
-          <br />
-          <label class="fs-3"> ₡ {{ ventasEfectivo }} </label>
+      <div class="col mb-2">
+        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+          <div>
+            <label class="fs-3">Ventas totales efectivo</label>
+          </div>
+          <div class="mt-auto">
+            <label class="fs-3"> <b>₡ {{ ventasEfectivo | number:'.0-0' }}</b> </label>
+          </div>
         </div>
       </div>
       <div class="col mb-2" style="min-width: 200px">
-        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
-          <label class="fs-3">Ventas totales sinpe</label>
-          <br />
-          <label class="fs-3"> ₡ {{ ventasSinpe }} </label>
+        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+          <div>
+            <label class="fs-3">Ventas totales sinpe</label>
+          </div>
+          <div class="mt-auto">
+            <label class="fs-3"> <b>₡ {{ ventasSinpe | number:'.0-0' }}</b> </label>
+          </div>
         </div>
       </div>
     </div>
@@ -36,7 +45,7 @@
 </div>
 
 <div class="row ps-3 pe-3 mt-3">
-  <div class="border border-warning p-3">
+  <div class="border border-warning border-4 p-3 my-rounded">
     <h3 class="text-warning">Totales por producto</h3>
     <div class="d-flex flex-wrap mt-3">
       <div
@@ -44,10 +53,13 @@
         style="min-width: 200px"
         *ngFor="let productoVendido of ventasProducto"
       >
-        <div class="border border-4 bg-light ms-2 me-2 p-4 h-100">
-          <label class="fs-3">{{ productoVendido.nombre }}</label>
-          <br />
-          <label class="fs-3"> ₡ {{ productoVendido.total }}</label>
+        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+          <div>
+            <label class="fs-3">{{ productoVendido.cantidad}} UNIT {{ productoVendido.nombre }}</label>
+          </div>
+          <div class="mt-auto">
+            <label class="fs-3"> <b>₡ {{ productoVendido.total | number:'.0-0' }}</b></label>
+          </div>
         </div>
       </div>
     </div>

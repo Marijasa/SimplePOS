@@ -28,6 +28,7 @@ export class ReporteTotalComponent {
     this.ventaService.getVentas().subscribe((ventas) => {
       this.ventas = ventas;
 
+      let totalProdCant = 0;
       // recorrer ventas y calcular total de ventas
       this.ventas.forEach((venta) => {
 
@@ -44,18 +45,23 @@ export class ReporteTotalComponent {
         // guardar total de ventas por producto
         venta.productos.forEach((producto: any) => {
           const totalProd = producto.precio * producto.cantidad;
+          totalProdCant += Number(producto.cantidad);
 
           if(this.ventasProducto[producto.id_producto] !== undefined) {
             this.ventasProducto[producto.id_producto].total += totalProd;
+            this.ventasProducto[producto.id_producto].cantidad += Number(producto.cantidad);
 
           } else {
             this.ventasProducto[producto.id_producto] = {
               nombre: producto.nombre,
               total: totalProd,
+              cantidad: Number(producto.cantidad),
             };
           }
         });
       });
+
+      console.log('totalProdCant', totalProdCant);
 
       // eliminar campos vacíos en ventasProducto
       this.ventasProducto = this.ventasProducto.filter((producto) => producto !== undefined);
