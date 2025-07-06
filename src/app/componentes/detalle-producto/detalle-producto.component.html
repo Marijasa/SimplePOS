@@ -4,8 +4,8 @@
     <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
     <p><strong>Precio:</strong> {{ producto.precio }}</p>
     <p><strong>Tipo producto:</strong> {{ producto.tipo_producto }}</p>
-    <p *ngIf="producto.activo"><strong>Activo:</strong> <span class="badge bg-success">Sí</span></p>
-    <p *ngIf="!producto.activo"><strong>Activo:</strong> <span class="badge bg-danger">No</span></p>
+    <p *ngIf="producto.activo == 1"><strong>Activo:</strong> <span class="badge bg-success">Sí</span></p>
+    <p *ngIf="producto.activo == 0"><strong>Activo:</strong> <span class="badge bg-danger">No</span></p>
   </div>
 
   <div class="d-flex justify-content-center mt-3">

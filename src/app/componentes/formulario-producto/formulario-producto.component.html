@@ -32,7 +32,7 @@
                [(ngModel)]="producto.id_tipo_producto"
                class="form-select form-select-lg"
       >
-        <option value="" selected>Seleccione</option>
+        <option value="">Seleccione</option>
         <option value="1">Bebida</option>
         <option value="2">Comida salada</option>
         <option value="3">Comida dulce</option>
@@ -48,7 +48,6 @@
           name="activo"
           class="form-check-input"
           value="1"
-          [checked]="producto.activo == 1"
           [(ngModel)]="producto.activo"
         />
         <label class="form-check-label" for="activosi"> Sí </label>
@@ -60,7 +59,6 @@
           name="activo"
           class="form-check-input"
           value="0"
-          [checked]="producto.activo == 0"
           [(ngModel)]="producto.activo"
         />
         <label class="form-check-label" for="activono"> No </label>
