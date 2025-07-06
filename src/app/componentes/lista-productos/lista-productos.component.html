@@ -12,6 +12,7 @@
       <th>ID</th>
       <th>Nombre</th>
       <th>Precio</th>
+      <th>Tipo</th>
       <th>Activo</th>
       <th>Acciones</th>
     </tr>
@@ -21,6 +22,7 @@
     <tr *ngFor="let producto of productos">
       <td>{{ producto.id }}</td>
       <td>{{ producto.nombre }}</td>
+      <td>{{ producto.tipo_producto }}</td>
       <td>{{ producto.precio }}</td>
       <td>
         <span *ngIf="producto.activo == 1" class="badge bg-success">Sí</span>

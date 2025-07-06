@@ -3,6 +3,7 @@
   <div *ngIf="producto">
     <p><strong>Nombre:</strong> {{ producto.nombre }}</p>
     <p><strong>Precio:</strong> {{ producto.precio }}</p>
+    <p><strong>Tipo producto:</strong> {{ producto.tipo_producto }}</p>
     <p *ngIf="producto.activo"><strong>Activo:</strong> <span class="badge bg-success">Sí</span></p>
     <p *ngIf="!producto.activo"><strong>Activo:</strong> <span class="badge bg-danger">No</span></p>
   </div>

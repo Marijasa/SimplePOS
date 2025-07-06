@@ -12,7 +12,12 @@
         style="min-width: 200px"
         *ngFor="let producto of productos; let i = index"
       >
-        <div class="d-flex flex-column border my-border border-4 bg-light ms-2 me-2 p-4 h-100">
+        <div class="d-flex flex-column my-border border-4 bg-light ms-2 me-2 p-4 h-100"
+             [ngStyle]="{
+               'border-style': 'solid',
+               'border-color': producto.color,
+             }"
+        >
          <div>
            <label class="fs-3">{{ producto.nombre }}</label>
          </div>

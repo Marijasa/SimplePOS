@@ -36,8 +36,12 @@ export class FormularioProductoComponent implements OnInit {
     } else {
       // Estamos agregando un nuevo producto
       this.titulo = 'Agregar Nuevo Producto';
+      this.producto.precio = 1;
+      this.producto.activo = 1;
       this.botonTexto = 'Guardar';
     }
+
+    console.log('el producto al iniciar', this.producto);
   }
 
   guardarProducto() {
